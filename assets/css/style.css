@@ -1,0 +1,58 @@
+body{
+    font-family: 'Chicle', cursive;
+    /* background-image: url("../images/wood_pattern.png");  */
+    background-color:lightskyblue;
+}
+
+
+.container{
+    margin: 0 auto;
+    float: center;
+    justify-content: center;
+    text-align: center;
+}
+h1{
+    font-size: 50px;
+    color:purple;
+}
+h3, p{
+    padding: 20px;
+    font-size: 50px;
+    display: inline;
+    color: purple;
+}
+
+#game-section h3{
+    font-family: 'Chicle', cursive;
+    font-size: 50px;
+    
+}
+.container #game-stats {
+    float: center;
+    padding: 10px;
+    /* text-align: left; */
+
+}
+#images{
+    display: inline;
+    /* width: 30px;
+    height: 30px; */
+}
+button{
+    background-color: black;
+}
+img{
+    width: 100px;
+    height: 100px;
+}
+/* #game-stats{
+    padding: 10px;
+} */
+#press-key{
+    padding:10px;
+}
+/* #animal-choice-text{
+    display:none;
+} */
+
+
