@@ -40,6 +40,8 @@ h3, p{
 }
 button{
     background-color: black;
+    width: 100px;
+    height: 100px;
 }
 img{
     width: 100px;
