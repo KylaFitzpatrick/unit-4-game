@@ -1,4 +1,4 @@
-var randomNumbers = Math.floor(Math.random() * 90) + 30;
+var randomNumbers = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
 
 var wins = 0;
 var losses = 0;
@@ -15,8 +15,8 @@ resetGame();
 function resetGame() {
     $("#wins-text").text(wins);
     $("#losses-text").text(losses);
-    $("#score-number").empty(guessedNumber);
-    randomNumber = Math.floor(Math.random() * 90) + 30;
+    $("#score-number").text("0");
+    randomNumber = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
     $("#random-number").text(randomNumber);
     console.log("Number to guess: " + randomNumber);
 } 
@@ -25,65 +25,65 @@ function resetGame() {
     // * When the player clicks on a crystal, it will add a specific amount of points to the player's total score. 
 //   * Your game will hide this amount until the player clicks a crystal.
 //   * When they do click one, update the player's score counter.  
-// We begin by expanding our array to include four options.
-var numberOption = Math.floor(Math.random() * 10) + 5;
-var numberOptions = [numberOption , numberOption, numberOption, numberOption];
 
-// Next we create a for loop to create crystals for every numberOption.
-for (var i = 0; i < numberOptions.length; i++) {
+// Create 4 number options 
+for (var i = 0; i < 4; i++) {
+var numberOptions = Math.floor(Math.random() * 12) + 1;
 
-  // For each iteration, we will create an imageCrystal
+  // Add number options to button tag
   var imageCrystal = $("<img>");
 
-  // First each crystal will be given the class ".crystal-image".
-  // This will allow the CSS to take effect.
+  // Each crystal will be given the class ".crystal-image".
   imageCrystal.addClass("crystal-image");
 
-  // Each imageCrystal will be given a src link to the crystal image
-  imageCrystal.attr("src", "assets/images/amethyst.jpg");
-//   imageCrystal.attr("src", "assets/images/druze.jpg", numberOptions[1]);
-//   imageCrystal.attr("src", "assets/images/fluorite.jpg", numberOptions[2]);
-//   imageCrystal.attr("src", "assets/images/rock-crystal.jpg", numberOptions[3]);
+ // Each imageCrystal will be given a src link to the crystal image
+ if(i === 0){ 
+imageCrystal.attr("src", "assets/images/amethyst.jpg");
+ } else if(i === 1){
+    imageCrystal.attr("src", "assets/images/druze.jpg");
+}else if(i === 2) {
+    imageCrystal.attr("src", "assets/images/fluorite.jpg");
+}else{
+    imageCrystal.attr("src", "assets/images/rock-crystal.jpg");
+}
 
-  // Each imageCrystal will be given a data attribute called data-crystalValue.
-  // This data attribute will be set equal to the array value.
-  imageCrystal.attr("data-crystalvalue", numberOptions[i]);
+
+  // Each imageCrystal will be given a data attribute called crystal value.
+  imageCrystal.attr("crystal-value", numberOptions);
 
   // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
   $("#images").append(imageCrystal);
+
 }  
    // This time, our click event applies to every single crystal on the page. Not just one.
   $(".crystal-image").on("click", function() {
 
-    // Determining the crystal's value requires us to extract the value from the data attribute.
-    // Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
-    // Using the .attr("data-crystalvalue") allows us to grab the value out of the "data-crystalvalue" attribute.
-    // Since attributes on HTML elements are strings, we must convert it to an integer before adding to the counter
-
-    var crystalValue = ($(this).attr("data-crystalvalue"));
+   
+    //extracting value of the clicked crystal
+    var crystalValue = ($(this).attr("crystal-value"));
+    //converting this crystal value form a string to an integer
     crystalValue = parseInt(crystalValue);
-    // We then add the crystalValue to the user's "counter" which is a global variable.
-    // Every click, from every crystal adds to the global counter.
+    // Every click, from every crystal adds to the guessesNumber counter.
     guessedNumber += crystalValue;
+    //dipslay the guessed number
     $("#score-number").text(guessedNumber);
-
-
-    // All of the same game win-lose logic applies. So the rest remains unchanged.
-    // alert("New score: " + guessedNumber);
+    console.log(guessedNumber);
 
       // * The player wins if their total score matches the random number from the beginning of the game.
 
     if (guessedNumber === randomNumber){
         wins++;
         $('#wins').text(wins);
-        alert("You win!");
+        $('#message').html("You won!!")
+        // alert("You win!");
         resetGame(); 
    
     // * The player loses if their score goes above the random number.
     }else if (guessedNumber > randomNumber){
         losses ++;
         $('#losses').text(losses);
-        alert("You lose!!");
+        $('#message').html("You lost. Try again!!")
+        // alert("You lose!!");
         resetGame();
     }
   // * The player wins if their total score matches the random number from the beginning of the game.

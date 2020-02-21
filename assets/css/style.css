@@ -1,6 +1,5 @@
 body{
     font-family: 'Chicle', cursive;
-    /* background-image: url("../images/wood_pattern.png");  */
     background-color:lightskyblue;
 }
 
@@ -15,10 +14,15 @@ h1{
     font-size: 50px;
     color:purple;
 }
-h3, p{
+h3{
     padding: 20px;
     font-size: 50px;
     display: inline;
+    color: purple;
+}
+#game-description p{
+    text-align: left;
+    font-size: 40px;
     color: purple;
 }
 
@@ -46,15 +50,12 @@ button{
 img{
     width: 100px;
     height: 100px;
-}
-/* #game-stats{
-    padding: 10px;
-} */
-#press-key{
     padding:10px;
 }
-/* #animal-choice-text{
-    display:none;
-} */
+img:hover {
+    border-color: royalblue;
+    border-style: solid;
+    border-width: 2px;
+}
 
 
